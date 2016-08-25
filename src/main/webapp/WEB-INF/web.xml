@@ -7,19 +7,19 @@
 
     <!--spring mvc配置开始-->
     <servlet>
-        <servlet-name>let'sGo</servlet-name>
+        <servlet-name>SpringWork</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <!-- 参数名称 -->
             <param-name>contextConfigLocation</param-name>
             <!-- 加载配置文件 -->
-            <param-value>/WEB-INF/cfg/let'sGo-servlet.xml</param-value>
+            <param-value>/WEB-INF/cfg/applicationContext.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>let'sGo</servlet-name>
+        <servlet-name>SpringWork</servlet-name>
         <url-pattern></url-pattern>
     </servlet-mapping>
     <!--spring mvc配置结束-->
