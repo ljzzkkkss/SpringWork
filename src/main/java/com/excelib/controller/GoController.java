@@ -1,9 +1,8 @@
 package com.excelib.controller;
 
-import com.excelib.daoimp.UserDaoImp;
+import com.excelib.Service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +17,8 @@ import javax.annotation.Resource;
 @Controller
 public class GoController {
     private final Log logger = LogFactory.getLog(GoController.class);
-
-    private UserDaoImp userDaoImp = new UserDaoImp();
+    @Resource
+    private UserService userService;
 
     //处理HEAD类型的"/"请求
     @RequestMapping(value = {"/"},method = {RequestMethod.HEAD})
@@ -32,7 +31,7 @@ public class GoController {
     public String index(Model model) throws Exception {
         logger.info("=====processed by index======");
         //返回msg参数
-        model.addAttribute("msg",userDaoImp.getUserByUsernameAndPassword("ljzzkkkss","123").getUsername());
+        model.addAttribute("msg",userService.getUserByPasswordAndUsername("ljzzkkkss","123456").get(0).getUsername());
         return "go";
     }
 }
