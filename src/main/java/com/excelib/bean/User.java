@@ -1,10 +1,13 @@
 package com.excelib.bean;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 
 /**
  * Created by 刘骏 on 2016/8/25.
  */
+@Component
 public class User implements Serializable {
     public String id;
     public String username;

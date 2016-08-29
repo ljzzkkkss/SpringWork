@@ -18,4 +18,8 @@ public class UserService {
     public List<User> getUserByPasswordAndUsername (String username, String password){
         return userDao.getUserByPasswordAndUsername(username,password);
     }
+
+    public int updateUser(String username, String password, String newpassword){
+        return userDao.updataUser(username,password,newpassword);
+    }
 }

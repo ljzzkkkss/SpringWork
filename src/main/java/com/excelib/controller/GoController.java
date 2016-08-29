@@ -31,7 +31,7 @@ public class GoController {
     public String index(Model model) throws Exception {
         logger.info("=====processed by index======");
         //返回msg参数
-        model.addAttribute("msg",userService.getUserByPasswordAndUsername("ljzzkkkss","123456").get(0).getUsername());
+        model.addAttribute("msg",userService.updateUser("ljzzkkkss","123456","1234qwer"));
         return "go";
     }
 }

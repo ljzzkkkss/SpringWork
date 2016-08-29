@@ -1,12 +1,8 @@
 package com.excelib.dao;
 
 import com.excelib.bean.User;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Component;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -16,14 +12,11 @@ import java.util.List;
 public class UserDao extends BaseDao{
     public List<User> getUserByPasswordAndUsername(String username, String password) {
         String sql = "select * from User where username='" + username + "' and password='" + password + "'";
-        return super.getJdbcTemplate().query(sql, new RowMapper() {
-            public Object mapRow(ResultSet rs, int num) throws SQLException {
-                User user = new User();
-                user.setId(rs.getString("id"));
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
-                return user;
-            }
-        });
+        return super.query(sql,User.class);
+    }
+
+    public int updataUser(String username, String password, String newpassword) {
+        String sql = "update User set password='" + newpassword + "' where username='" + username + "' and password='" + password + "'";
+        return super.update(sql);
     }
 }
