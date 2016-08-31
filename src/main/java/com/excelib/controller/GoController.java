@@ -23,7 +23,7 @@ public class GoController {
     //处理HEAD类型的"/"请求
     @RequestMapping(value = {"/"},method = {RequestMethod.HEAD})
     public String head() {
-        return"go";
+        return"chat";
     }
 
     //处理GET类型的"/index"和"/"请求
@@ -31,7 +31,7 @@ public class GoController {
     public String index(Model model) throws Exception {
         logger.info("=====processed by index======");
         //返回msg参数
-        model.addAttribute("msg",userService.updateUser("ljzzkkkss","123456","1234qwer"));
-        return "go";
+        model.addAttribute("msg",userService.getUserByPasswordAndUsername("ljzzkkkss","1234qwer").get(0).getUsername());
+        return "chat";
     }
 }
